@@ -1,0 +1,9 @@
+project:
+  output-dir: _docs
+
+website:
+  title: "pidinst-experiments"
+  site-url: "https://charlesvardeman.github.io/pidinst-experiments"
+  description: "Experiments with RDA PIDINST"
+  repo-branch: main
+  repo-url: "https://github.com/charlesvardeman/pidinst-experiments"
