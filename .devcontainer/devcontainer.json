@@ -17,7 +17,23 @@
 	// "forwardPorts": [],
 
 	// Use 'postCreateCommand' to run commands after the container is created.
-	"postCreateCommand": "pip3 install --user -r requirements.txt"
+	"postCreateCommand": "pip3 install --user -r requirements.txt",
+	"customizations": {
+		"vscode": {
+			"extensions": [
+				"streetsidesoftware.code-spell-checker",
+				"hediet.vscode-drawio",
+				"iterative.dvc",
+				"GitHub.copilot-nightly",
+				"GitHub.copilot-chat",
+				"ms-toolsai.jupyter",
+				"ms-python.python",
+				"quarto.quarto",
+				"stardog-union.stardog-rdf-grammars",
+				"Zazuko.vscode-rdf-sketch"
+			]
+		}
+	}
 
 	// Configure tool-specific properties.
 	// "customizations": {},
