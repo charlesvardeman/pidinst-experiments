@@ -1,0 +1,218 @@
+@prefix : <http://example.org/PIDINST/> .
+@prefix schema: <http://schema.org/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+
+:InstrumentInstance a owl:Class ;
+  rdfs:comment "An instrument instance described in the PIDINST schema." .
+
+:identifier a owl:DatatypeProperty ;
+  schema:domainIncludes :InstrumentInstance ;
+  schema:rangeIncludes xsd:string ;
+  rdfs:comment "Unique string that identifies the instrument instance." .
+
+:identifierType a owl:DatatypeProperty ;
+  schema:domainIncludes :InstrumentInstance ;
+  schema:rangeIncludes xsd:string ;
+  rdfs:comment "Type of the identifier." .
+
+:schemaVersion a owl:DatatypeProperty ;
+  schema:domainIncludes :InstrumentInstance ;
+  schema:rangeIncludes xsd:string ;
+  rdfs:comment "Version number of the PIDINST schema used in this record." .
+
+:landingPage a owl:DatatypeProperty ;
+  schema:domainIncludes :InstrumentInstance ;
+  schema:rangeIncludes xsd:anyURI ;
+  rdfs:comment "A landing page that the identifier resolves to." .
+
+:name a owl:DatatypeProperty ;
+  schema:domainIncludes :InstrumentInstance ;
+  schema:rangeIncludes xsd:string ;
+  rdfs:comment "Name by which the instrument instance is known." .
+
+:owner a owl:ObjectProperty ;
+  schema:domainIncludes :InstrumentInstance ;
+  schema:rangeIncludes :Owner ;
+  rdfs:comment "Institution(s) responsible for the management of the instrument." .
+
+:Owner a owl:Class ;
+  rdfs:comment "Institution(s) responsible for the management of the instrument." .
+
+:ownerName a owl:DatatypeProperty ;
+  schema:domainIncludes :Owner ;
+  schema:rangeIncludes xsd:string ;
+  rdfs:comment "Full name of the owner." .
+
+:ownerContact a owl:DatatypeProperty ;
+  schema:domainIncludes :Owner ;
+  schema:rangeIncludes xsd:string ;
+  rdfs:comment "Contact address of the owner." .
+
+:ownerIdentifier a owl:DatatypeProperty ;
+  schema:domainIncludes :Owner ;
+  schema:rangeIncludes xsd:string ;
+  rdfs:comment "Identifier used to identify the owner." .
+
+:ownerIdentifierType a owl:DatatypeProperty ;
+  schema:domainIncludes :Owner ;
+  schema:rangeIncludes xsd:string ;
+  rdfs:comment "Type of the owner identifier." .
+
+
+:Manufacturer a owl:Class ;
+    rdfs:label "Manufacturer" ;
+    rdfs:comment "The instrument's manufacturer(s) or developer." .
+
+:manufacturerName a owl:DatatypeProperty ;
+    rdfs:label "manufacturerName" ;
+    schema:domainIncludes :Manufacturer ;
+    schema:rangeIncludes xsd:string .
+
+:manufacturerIdentifier a owl:DatatypeProperty ;
+    rdfs:label "manufacturerIdentifier" ;
+    schema:domainIncludes :Manufacturer ;
+    schema:rangeIncludes xsd:string .
+
+:manufacturerIdentifierType a owl:DatatypeProperty ;
+    rdfs:label "manufacturerIdentifierType" ;
+    schema:domainIncludes :Manufacturer ;
+    schema:rangeIncludes xsd:string .
+
+# Property linking Instrument Instance to Manufacturer
+:hasManufacturer a owl:ObjectProperty ;
+    rdfs:label "hasManufacturer" ;
+    schema:domainIncludes :InstrumentInstance ;
+    schema:rangeIncludes :Manufacturer .
+
+:Model a owl:Class ;
+    rdfs:label "Model" ;
+    rdfs:comment "Name of the model or type of device as attributed by the manufacturer." .
+
+:modelName a owl:DatatypeProperty ;
+    rdfs:label "modelName" ;
+    schema:domainIncludes :Model ;
+    schema:rangeIncludes xsd:string .
+
+:modelIdentifier a owl:DatatypeProperty ;
+    rdfs:label "modelIdentifier" ;
+    schema:domainIncludes :Model ;
+    schema:rangeIncludes xsd:string .
+
+:modelIdentifierType a owl:DatatypeProperty ;
+    rdfs:label "modelIdentifierType" ;
+    schema:domainIncludes :Model ;
+    schema:rangeIncludes xsd:string .
+
+# Property linking Instrument Instance to Model
+:hasModel a owl:ObjectProperty ;
+    rdfs:label "hasModel" ;
+    schema:domainIncludes :InstrumentInstance ;
+    schema:rangeIncludes :Model .
+
+:description a owl:DatatypeProperty ;
+    rdfs:label "description" ;
+    schema:domainIncludes :InstrumentInstance ;
+    schema:rangeIncludes xsd:string .
+
+:InstrumentType a owl:Class ;
+    rdfs:label "InstrumentType" ;
+    rdfs:comment "Classification of the type of the instrument." .
+
+:instrumentTypeName a owl:DatatypeProperty ;
+    rdfs:label "instrumentTypeName" ;
+    schema:domainIncludes :InstrumentType ;
+    schema:rangeIncludes xsd:string .
+
+:instrumentTypeIdentifier a owl:DatatypeProperty ;
+    rdfs:label "instrumentTypeIdentifier" ;
+    schema:domainIncludes :InstrumentType ;
+    schema:rangeIncludes xsd:string .
+
+:instrumentTypeIdentifierType a owl:DatatypeProperty ;
+    rdfs:label "instrumentTypeIdentifierType" ;
+    schema:domainIncludes :InstrumentType ;
+    schema:rangeIncludes xsd:string .
+
+# Property linking Instrument Instance to InstrumentType
+:hasInstrumentType a owl:ObjectProperty ;
+    rdfs:label "hasInstrumentType" ;
+    schema:domainIncludes :InstrumentInstance ;
+    schema:rangeIncludes :InstrumentType .
+
+:measuredVariable rdf:type rdf:Property ;
+    rdfs:label "measuredVariable" ;
+    rdfs:domain :InstrumentInstance ;
+    rdfs:range xsd:string .
+    
+:date rdf:type rdf:Property ;
+    rdfs:label "date" ;
+    rdfs:domain :InstrumentInstance ;
+    rdfs:range xsd:dateTime .
+
+:dateType rdf:type rdf:Property ;
+    rdfs:label "dateType" ;
+    rdfs:domain :InstrumentInstance ;
+    rdfs:range :DateType .
+
+:DateType rdf:type rdfs:Class ;
+    rdfs:label "DateType" ;
+    rdfs:subClassOf rdf:List .
+    
+:Commissioned rdf:type :DateType .
+:DeCommissioned rdf:type :DateType .
+
+:relatedIdentifier rdf:type rdf:Property ;
+    rdfs:label "relatedIdentifier" ;
+    rdfs:domain :InstrumentInstance ;
+    rdfs:range xsd:string .
+
+:relatedIdentifierType rdf:type rdf:Property ;
+    rdfs:label "relatedIdentifierType" ;
+    rdfs:domain :InstrumentInstance ;
+    rdfs:range :RelatedIdentifierType .
+
+:RelatedIdentifierType rdf:type rdfs:Class ;
+    rdfs:label "RelatedIdentifierType" ;
+    rdfs:subClassOf rdf:List .
+
+# ... Insert controlled list values as subclasses of RelatedIdentifierType...
+
+:relationType rdf:type rdf:Property ;
+    rdfs:label "relationType" ;
+    rdfs:domain :InstrumentInstance ;
+    rdfs:range :RelationType .
+
+:RelationType rdf:type rdfs:Class ;
+    rdfs:label "RelationType" ;
+    rdfs:subClassOf rdf:List .
+
+# ... Insert controlled list values as subclasses of RelationType...
+
+:relatedIdentifierName rdf:type rdf:Property ;
+    rdfs:label "relatedIdentifierName" ;
+    rdfs:domain :InstrumentInstance ;
+    rdfs:range xsd:string .
+
+:alternateIdentifier rdf:type rdf:Property ;
+    rdfs:label "alternateIdentifier" ;
+    rdfs:domain :InstrumentInstance ;
+    rdfs:range xsd:string .
+
+:alternateIdentifierType rdf:type rdf:Property ;
+    rdfs:label "alternateIdentifierType" ;
+    rdfs:domain :InstrumentInstance ;
+    rdfs:range :AlternateIdentifierType .
+
+:AlternateIdentifierType rdf:type rdfs:Class ;
+    rdfs:label "AlternateIdentifierType" ;
+    rdfs:subClassOf rdf:List .
+
+# ... Insert controlled list values as subclasses of AlternateIdentifierType...
+
+:alternateIdentifierName rdf:type rdf:Property ;
+    rdfs:label "alternateIdentifierName" ;
+    rdfs:domain :InstrumentInstance ;
+    rdfs:range xsd:string .

@@ -1,4 +1,4 @@
-ipython
+ipykernel
 kglab
 csvw
 nbdev

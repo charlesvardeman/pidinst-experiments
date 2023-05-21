@@ -1,0 +1,263 @@
+@prefix : <http://example.org/PIDINST/> .
+@prefix schema: <http://schema.org/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix sh: <http://www.w3.org/ns/shacl#> .
+
+@prefix : <http://example.org/PIDINST/> .
+@prefix schema: <http://schema.org/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix sh: <http://www.w3.org/ns/shacl#> .
+
+:InstrumentInstanceShape a sh:NodeShape ;
+  sh:targetClass :InstrumentInstance ;
+  sh:property [
+    sh:path :identifier ;
+    sh:datatype xsd:string ;
+    sh:minCount 1 ;
+    sh:maxCount 1 ;
+    sh:severity sh:Violation ;
+    sh:message "An instrument instance must have a unique identifier." ;
+  ] ;
+  sh:property [
+    sh:path :identifierType ;
+    sh:datatype xsd:string ;
+    sh:minCount 1 ;
+    sh:maxCount 1 ;
+    sh:severity sh:Violation ;
+    sh:message "An instrument instance must have an identifier type." ;
+  ] ;
+  sh:property [
+    sh:path :schemaVersion ;
+    sh:datatype xsd:string ;
+    sh:minCount 1 ;
+    sh:maxCount 1 ;
+    sh:severity sh:Violation ;
+    sh:message "An instrument instance must have a schema version." ;
+  ] ;
+  sh:property [
+    sh:path :landingPage ;
+    sh:datatype xsd:anyURI ;
+    sh:minCount 1 ;
+    sh:maxCount 1 ;
+    sh:severity sh:Violation ;
+    sh:message "An instrument instance must have a landing page." ;
+  ] ;
+  sh:property [
+    sh:path :name ;
+    sh:datatype xsd:string ;
+    sh:minCount 1 ;
+    sh:maxCount 1 ;
+    sh:severity sh:Violation ;
+    sh:message "An instrument instance must have a name." ;
+  ] ;
+  sh:property [
+    sh:path :owner ;
+    sh:node :OwnerShape ;
+    sh:minCount 1 ;
+    sh:severity sh:Violation ;
+    sh:message "An instrument instance must have at least one owner." ;
+  ] ;
+  sh:property [
+        sh:path :hasManufacturer ;
+        sh:name "hasManufacturer" ;
+        sh:description "The instrument's manufacturer(s) or developer." ;
+        sh:class :Manufacturer ;
+        sh:minCount 1 ;
+        sh:nodeKind sh:IRI ;
+    ] ,
+    sh:property [
+        sh:path :hasModel ;
+        sh:name "hasModel" ;
+        sh:description "Name of the model or type of device as attributed by the manufacturer." ;
+        sh:class :Model ;
+        sh:maxCount 1 ;
+        sh:nodeKind sh:IRI ;
+    ] ,
+    sh:property [
+        sh:path :description ;
+        sh:name "description" ;
+        sh:description "Technical description of the device and its capabilities." ;
+        sh:datatype xsd:string ;
+        sh:maxCount 1 ;
+    ] ,
+    sh:property [
+        sh:path :hasInstrumentType ;
+        sh:name "hasInstrumentType" ;
+        sh:description "Classification of the type of the instrument." ;
+        sh:class :InstrumentType ;
+        sh:nodeKind sh:IRI ;
+    ] ;
+    sh:property [
+        sh:path :measuredVariable ;
+        sh:name "measuredVariable" ;
+        sh:description "The variable(s) that this instrument measures or observes" ;
+        sh:datatype xsd:string ;
+        sh:minCount 0 ;
+    ] ;
+    sh:property [
+        sh:path :date ;
+        sh:name "date" ;
+        sh:description "Dates relevant to the instrument" ;
+        sh:datatype xsd:dateTime ;
+        sh:minCount 0 ;
+    ] ;
+    sh:property [
+        sh:path :dateType ;
+        sh:name "dateType" ;
+        sh:description "The type of the date" ;
+        sh:class :DateType ;
+        sh:minCount 1 ;
+    ] ;
+    sh:property [
+        sh:path :relatedIdentifier ;
+        sh:name "relatedIdentifier" ;
+        sh:description "Identifiers of related resources" ;
+        sh:datatype xsd:string ;
+        sh:minCount 0 ;
+    ] ;
+    sh:property [
+        sh:path :relatedIdentifierType ;
+        sh:name "relatedIdentifierType" ;
+        sh:description "Type of the identifier" ;
+        sh:class :RelatedIdentifierType ;
+        sh:minCount 1 ;
+    ] ;
+    sh:property [
+        sh:path :relationType ;
+        sh:name "relationType" ;
+        sh:description "Description of the relationship" ;
+        sh:class :RelationType ;
+        sh:minCount 1 ;
+    ] ;
+    sh:property [
+        sh:path :relatedIdentifierName ;
+        sh:name "relatedIdentifierName" ;
+        sh:description "A name for the related resource, may be used to give a hint on the content of that resource" ;
+        sh:datatype xsd:string ;
+        sh:minCount 0 ;
+        sh:maxCount 1 ;
+    ] ;
+    sh:property [
+        sh:path :alternateIdentifier ;
+        sh:name "alternateIdentifier" ;
+        sh:description "Identifiers other than the PIDINST pertaining to the same instrument instance. This should be used if the instrument has a serial number. Other possible uses include an owner's inventory number or an entry in some instrument data base." ;
+        sh:datatype xsd:string ;
+        sh:minCount 0 ;
+    ] ;
+    sh:property [
+        sh:path :alternateIdentifierType ;
+        sh:name "alternateIdentifierType" ;
+        sh:description "Type of the identifier" ;
+        sh:class :AlternateIdentifierType ;
+        sh:minCount 1 ;
+    ] ;
+    sh:property [
+        sh:path :alternateIdentifierName ;
+        sh:name "alternateIdentifierName" ;
+        sh:description "A supplementary name for the identifier type. This is mostly useful if alternateIdentifierType is Other." ;
+        sh:datatype xsd:string ;
+        sh:minCount 0 ;
+        sh:maxCount 1 ;
+    ] .
+
+:OwnerShape a sh:NodeShape ;
+  sh:targetClass :Owner ;
+  sh:property [
+    sh:path :ownerName ;
+    sh:datatype xsd:string ;
+    sh:minCount 1 ;
+    sh:maxCount 1 ;
+    sh:severity sh:Violation ;
+    sh:message "An owner must have a name." ;
+  ] ;
+  sh:property [
+    sh:path :ownerContact ;
+    sh:datatype xsd:string ;
+    sh:minCount 0 ;
+    sh:maxCount 1 ;
+    sh:severity sh:Warning ;
+    sh:message "An owner may have a contact address." ;
+  ] ;
+  sh:property [
+    sh:path :ownerIdentifier ;
+    sh:datatype xsd:string ;
+    sh:minCount 0 ;
+    sh:maxCount 1 ;
+    sh:severity sh:Warning ;
+    sh:message "An owner may have an identifier." ;
+  ] ;
+  sh:property [
+    sh:path :ownerIdentifierType ;
+    sh:datatype xsd:string ;
+    sh:minCount 0 ;
+    sh:maxCount 1 ;
+    sh:severity sh:Warning ;
+    sh:message "An owner may have an identifier type." ;
+  ] .
+
+:ManufacturerShape a sh:NodeShape ;
+    sh:targetClass :Manufacturer ;
+    sh:property [
+        sh:path :manufacturerName ;
+        sh:name "manufacturerName" ;
+        sh:datatype xsd:string ;
+        sh:minCount 1 ;
+    ] ,
+    sh:property [
+        sh:path :manufacturerIdentifier ;
+        sh:name "manufacturerIdentifier" ;
+        sh:datatype xsd:string ;
+        sh:maxCount 1 ;
+    ] ,
+    sh:property [
+        sh:path :manufacturerIdentifierType ;
+        sh:name "manufacturerIdentifierType" ;
+        sh:datatype xsd:string ;
+        sh:maxCount 1 ;
+    ] .
+    
+:ModelShape a sh:NodeShape ;
+    sh:targetClass :Model ;
+    sh:property [
+        sh:path :modelName ;
+        sh:name "modelName" ;
+        sh:datatype xsd:string ;
+        sh:minCount 1 ;
+    ] ,
+    sh:property [
+        sh:path :modelIdentifier ;
+        sh:name "modelIdentifier" ;
+        sh:datatype xsd:string ;
+        sh:maxCount 1 ;
+    ] ,
+    sh:property [
+        sh:path :modelIdentifierType ;
+        sh:name "modelIdentifierType" ;
+        sh:datatype xsd:string ;
+        sh:maxCount 1 ;
+    ] .
+
+:InstrumentTypeShape a sh:NodeShape ;
+    sh:targetClass :InstrumentType ;
+    sh:property [
+        sh:path :instrumentTypeName ;
+        sh:name "instrumentTypeName" ;
+        sh:datatype xsd:string ;
+        sh:minCount 1 ;
+    ] ,
+    sh:property [
+        sh:path :instrumentTypeIdentifier ;
+        sh:name "instrumentTypeIdentifier" ;
+        sh:datatype xsd:string ;
+        sh:maxCount 1 ;
+    ] ,
+    sh:property [
+        sh:path :instrumentTypeIdentifierType ;
+        sh:name "instrumentTypeIdentifierType" ;
+        sh:datatype xsd:string ;
+        sh:maxCount 1 ;
+    ] .

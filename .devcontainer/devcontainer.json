@@ -17,7 +17,7 @@
 	// "forwardPorts": [],
 
 	// Use 'postCreateCommand' to run commands after the container is created.
-	"postCreateCommand": "pip3 install --user -r requirements.txt",
+	"postCreateCommand": "python3 -m pip install -r requirements.txt",
 	"customizations": {
 		"vscode": {
 			"extensions": [
@@ -30,7 +30,8 @@
 				"ms-python.python",
 				"quarto.quarto",
 				"stardog-union.stardog-rdf-grammars",
-				"Zazuko.vscode-rdf-sketch"
+				"Zazuko.vscode-rdf-sketch",
+				"bierner.markdown-mermaid"
 			]
 		}
 	}
