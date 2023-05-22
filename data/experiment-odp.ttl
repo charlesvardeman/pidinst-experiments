@@ -1,0 +1,87 @@
+@prefix : <http://example.com/odp#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix schema: <http://schema.org/> .
+
+: a owl:Ontology ;
+    rdfs:comment "Ontology Design Pattern for Scientific Analysis Experiments" ;
+    rdfs:label "ScientificAnalysisExperimentsODP" .
+
+:Experiment a owl:Class ;
+    rdfs:label "Experiment" ;
+    skos:definition "A process or investigation intended to achieve a particular result."@en .
+
+:SynthesisExperiment a owl:Class ;
+    rdfs:label "Synthesis Experiment" ;
+    skos:definition "A type of experiment intended to synthesize a sample."@en ;
+    rdfs:subClassOf :Experiment .
+
+:CharacterizationExperiment a owl:Class ;
+    rdfs:label "Characterization Experiment" ;
+    skos:definition "A type of experiment intended to characterize a sample."@en ;
+    rdfs:subClassOf :Experiment .
+
+:Role a owl:Class ;
+    rdfs:label "Role" ;
+    skos:definition "The function or participation of an object in an experiment."@en .
+
+:Procedure a owl:Class ;
+    rdfs:label "Procedure" ;
+    skos:definition "A directive information content entity that describes how to achieve an objective."@en .
+
+:Instrument a owl:Class ;
+    rdfs:label "Instrument" ;
+    skos:definition "A material entity that is created to serve a specific role or purpose."@en .
+
+:Sample a owl:Class ;
+    rdfs:label "Sample" ;
+    skos:definition "A material entity that is intended to be the subject of study or investigation."@en .
+
+:Result a owl:Class ;
+    rdfs:label "Result" ;
+    skos:definition "An information content entity that represents the output of an investigation or study."@en .
+
+:hasParticipant a owl:ObjectProperty ;
+    rdfs:label "hasParticipant" ;
+    schema:domainIncludes :Experiment ;
+    schema:rangeIncludes :Role ;
+    skos:definition "Links an Experiment to a Role."@en .
+
+:followedBy a owl:ObjectProperty ;
+    rdfs:label "followedBy" ;
+    schema:domainIncludes :Experiment ;
+    schema:rangeIncludes :Experiment ;
+    skos:definition "Links one Experiment to a subsequent Experiment."@en .
+
+:Equipment a owl:Class ;
+    rdfs:label "Equipment" ;
+    skos:definition "A superclass for equipment used in experiments, such as an Instrument."@en .
+
+:Material a owl:Class ;
+    rdfs:label "Material" ;
+    skos:definition "A superclass for materials used in experiments, such as a Sample."@en .
+
+:Reagent a owl:Class ;
+    rdfs:label "Reagent" ;
+    skos:definition "A substance added to a system to cause a chemical reaction."@en ;
+    rdfs:subClassOf :Material .
+
+:Solvent a owl:Class ;
+    rdfs:label "Solvent" ;
+    skos:definition "A substance capable of dissolving other substances."@en ;
+    rdfs:subClassOf :Material .
+
+:usesEquipment a owl:ObjectProperty ;
+    rdfs:label "usesEquipment" ;
+    schema:domainIncludes :Experiment ;
+    schema:rangeIncludes :Equipment ;
+    skos:definition "Links an Experiment to an Equipment it uses."@en .
+
+:usesMaterial a owl:ObjectProperty ;
+    rdfs:label "usesMaterial" ;
+    schema:domainIncludes :Experiment ;
+    schema:rangeIncludes :Material ;
+    skos:definition "Links an Experiment to a Material it uses."@en .
+
