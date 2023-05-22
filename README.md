@@ -6,8 +6,8 @@ This repository contains some simple experiments with the RDA PIDINST
 schema and the creation of a simple ontology based on it. The schema is
 available at
 [rdawg-pidinst](https://github.com/rdawg-pidinst/schema/blob/master/schema.rst).
-The ontology is available at [pidinst.ttl](../data/pidinst.ttl) as well
-as SHACL shapes at [pidinst-shapes.ttl](../data/pidinst-shapes.ttl).
+The ontology is available at [pidinst.ttl](./data/pidinst.ttl) as well
+as SHACL shapes at [pidinst-shapes.ttl](./data/pidinst-shapes.ttl).
 
 ## Tools
 
@@ -20,7 +20,9 @@ as SHACL shapes at [pidinst-shapes.ttl](../data/pidinst-shapes.ttl).
 
 ## References
 
-- RDA Instrument Identifiers
+- [NSF Open Knowledge Network
+  Roadmap](https://nsf-gov-resources.nsf.gov/2022-09/OKN%20Roadmap%20-%20Report_v03.pdf?VersionId=xmU9ccfd_nWRlDDSUE9HrOCvbM1fny24)
+- [RDA Instrument Identifiers](https://pidinst.org)
   - [rdawg-pidinst/schema: RDA WG PIDINST Metadata Schema
     (github.com)](https://github.com/rdawg-pidinst/schema)
   - [\# Metadata Schema for the Persistent Identification of
@@ -45,6 +47,10 @@ as SHACL shapes at [pidinst-shapes.ttl](../data/pidinst-shapes.ttl).
     Notebook](https://www.rd-alliance.org/sites/default/files/RDA%20%26%20ESIP%20Physical%20Samples%20Webinar%20June%202021.pdf)
   - [RRIDs: A Way to Track Samples Through the Scientific
     Literature](https://www.rd-alliance.org/PS_RRIDs_August2021_webinar)
+- [RDA
+  iAdopt](https://www.rd-alliance.org/group/interoperable-descriptions-observable-property-terminology-wg-i-adopt-wg/wiki/i-adopt)
+  - [RDA iAdopt Github](https://github.com/i-adopt)
+  - [RDA iAdopt Github - Ontology](https://github.com/i-adopt/ontology)
 
 ## Science on Schema.org
 
@@ -80,7 +86,8 @@ as SHACL shapes at [pidinst-shapes.ttl](../data/pidinst-shapes.ttl).
 - [SPDX License List](https://spdx.org/licenses/)
 - [SPDX Model Version 3 Github](https://github.com/spdx/spdx-3-model)
 - [Quantities, Units, Dimensions and Time](https://www.qudt.org/)
-- \[\]
+- [SBoMs](https://www.ntia.gov/sbom)
+- [CyberSecurity and SBoMs](https://www.cisa.gov/sbom)
 
 ## Sample Use Case
 
@@ -120,25 +127,111 @@ Re_InSe_0T_5K_SC-20%*600meV_50um_5sec* 0.65NA_Gate Sweep -10V to
 
 ## Refactor Use case Narrative
 
-The experimental data (spectra) are acquired by a spectrometer (#1
-HRS750, \#2 IsoPlane, Teledyne Princeton Instruments). The spectrometers
-are (almost) fully automated and controlled via the LightField software
-(Teledyne Princeton Instruments). LightField automatically saves the
-acquired data and all experiment settings (spectrometer settings) in one
-file (spe file format). Each experiment is saved in a folder with the
-following directory naming convention: “PI name_Experiment ID_Magnet
-system-Instrument_Start date”. Inside the folder is stored the spe file
-with the following file naming convention:
+> The experimental data (spectra) are acquired by a spectrometer (#1
+> HRS750, \#2 IsoPlane, Teledyne Princeton Instruments). The
+> spectrometers are (almost) fully automated and controlled via the
+> LightField software (Teledyne Princeton Instruments). LightField
+> automatically saves the acquired data and all experiment settings
+> (spectrometer settings) in one file (spe file format). Each experiment
+> is saved in a folder with the following directory naming convention:
+> “PI name_Experiment ID_Magnet system-Instrument_Start date”. Inside
+> the folder is stored the spe file with the following file naming
+> convention:
 
-Type of the experiment: PL, Ra(man), Re(flectance), Tr(ansmittance)
-Sample short name: \*\*\*\* Magnetic field: ***T (or from to )
-Temperature: ***K Light source: SC, 532nm, 785nm, … - Power: ***mW or
-uW, or percentage Central frequency / wl/energy: ***cm-1, nm, eV Slit:
-value: \*\*\* um Acq.time: ***min or sec Objective NA: ***NA Other: gate
-voltage, pressure, …
+> Type of the experiment: PL, Ra(man), Re(flectance), Tr(ansmittance): -
+> Sample short name: \*\*\*\* - Magnetic field: ***T (or from to ) -
+> Temperature: ***K - Light source: SC, 532nm, 785nm, … - Power: ***mW
+> or uW, or percentage - Central frequency / wl/energy: ***cm-1, nm,
+> eV - Slit: value: \*\*\* um - Acq.time: ***min or sec - Objective NA:
+> ***NA - Other: gate voltage, pressure, …
 
-For example: PL_WSe2-MoSe2_00.0T_to_05.2T\_
-10K_633nm-100uW_720nm_30um_2min_0.65NA.SPE
-Ra_CsPr_30T_7.2K_532nm-2mW_550cm-1_30um_3x2min_0.82NA.SPE
-Re_InSe_0T_5K_SC-20%*600meV_50um_5sec* 0.65NA_Gate Sweep -10V to
-+20V.SPE
+> For example: PL_WSe2-MoSe2_00.0T_to_05.2T\_
+> 10K_633nm-100uW_720nm_30um_2min_0.65NA.SPE
+> Ra_CsPr_30T_7.2K_532nm-2mW_550cm-1_30um_3x2min_0.82NA.SPE
+> Re_InSe_0T_5K_SC-20%*600meV_50um_5sec* 0.65NA_Gate Sweep -10V to
+> +20V.SPE
+
+## LLMs
+
+- Use Keywords and descriptions for parameters
+- Model the instrument as a product
+- Model the settings more formally.
+
+## ChatGPT summary
+
+Certainly, the following provides a range of options that the MagLab
+could consider when developing their semantic infrastructure, taking
+into consideration both minimal and more comprehensive approaches.
+
+1.  **Minimal Approach - Schema.org metadata for experiments:**
+    - *Description:* Use Schema.org terms to describe the key features
+      of your experiments. This involves adding appropriate Schema.org
+      types (like `Dataset`, `Person`, `Organization`, etc.) and
+      properties to your HTML metadata.
+    - *FAIR perspective:* This approach would increase the Findability
+      and Interoperability of your datasets, as Schema.org is widely
+      recognized and used by major search engines, aiding in data
+      discovery. However, this is a general-purpose vocabulary and may
+      lack the specificity required to fully describe scientific
+      experiments.
+2.  **Mid-level Approach - Schema.org + ESIP Science-on-Schema.org
+    guidelines:**
+    - *Description:* Extend the minimal approach by following ESIP’s
+      guidelines for using Schema.org in a scientific context. This
+      provides a richer description of your data and includes terms from
+      QUDT to quantify units and measuredVariables.
+    - *FAIR perspective:* By adhering to a community-accepted standard
+      like ESIP, you enhance the Interoperability and Reusability of
+      your data, as others in the scientific community will have a
+      better understanding of the metadata and can use it more
+      effectively.
+3.  **Advanced Approach - Adopt a more descriptive Ontology Design
+    Pattern (ODP):**
+    - *Description:* Implement a more formal ontology structure by
+      creating a pattern that separates `Experiment`, `Instrument`, and
+      `Sample` as distinct entities that participate in the `Experiment`
+      process. This can be achieved with Semanticscience Integrated
+      Ontology (SIO), which provides a rich semantic framework for
+      describing scientific entities and processes. Here, `Instrument`
+      and `Sample` participate in `Experiment`, which is a subclass of
+      `SIO:Process` (or `prov:Activity` for alignment with PROV-O).
+    - *FAIR perspective:* This approach would greatly enhance the
+      Interoperability and Reusability of your data by providing a
+      robust and expressive semantic model for your experiments. This
+      detailed semantic information can improve data discovery and
+      understanding, aiding both human users and automated processes.
+4.  **Comprehensive Approach - Integrate with existing ontologies and
+    identifiers:**
+    - *Description:* Further expand the advanced approach by aligning
+      with existing ontologies and identifier systems. This could
+      include leveraging the PhysicalSamples ontology and Instrument
+      identifiers (PIDINST) from RDA, BioSchemas recommendations, and
+      RRIDs for tracking samples. Use OWL-Time and W3C locn for
+      representing time and location, respectively.
+    - *FAIR perspective:* This approach ensures maximal Findability,
+      Accessibility, Interoperability, and Reusability of your data by
+      adhering to well-established standards and practices. It promotes
+      data integration, comparison, and reuse across different studies
+      and scientific fields.
+
+In summary, the chosen approach depends on the specific needs and
+resources of the MagLab. A more comprehensive approach offers greater
+FAIR compliance and utility for data users but requires more effort to
+implement and maintain. Consider the FAIR principles as guiding
+concepts, promoting maximum use and reuse of your valuable data.
+Remember that being FAIR is a journey, not a destination, and even small
+steps towards better metadata can have a significant impact on data
+utility.
+
+## Work
+
+- Sample PIDINST landing Page + Metadata
+- Guidance Document Instrument.md
+- PIDINST Schema dereference via w3id.org
+- ODP for “experiment” leveraging SIO and Prov-O
+- RO-Crate for experiment
+- HDF5 for experiment
+- Complete Wikidata for Princeton Instruments HRS750
+- Complete Wikidata for Princeton Instruments IsoPlane
+- Complete Wikidata for LightField
+- Prompt engineering for @context

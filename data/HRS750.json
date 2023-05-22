@@ -1,0 +1,94 @@
+{
+  "@context": {
+    "pidinst": "http://pidinst.org/",
+    "schema": "http://schema.org/",
+    "xsd": "http://www.w3.org/2001/XMLSchema#",
+    "rdfs": "http://www.w3.org/2000/01/rdf-schema#"
+  },
+  "@type": "pidinst:IdentifierInstance",
+  "@id": "https://example.org/hrs750",
+  "pidinst:hasIdentifier": {
+    "@type": "pidinst:Identifier",
+    "@id": "https://example.org/hrs750-id",
+    "rdfs:label": "Teledyne Princeton Instruments HRS750",
+    "rdfs:comment": "A high-resolution spectrometer owned by NSF MagLab",
+    "pidinst:hasIdentifierType": {
+      "@type": "pidinst:IdentifierType",
+      "@id": "https://example.org/hrs750-type",
+      "rdfs:label": "Instrument"
+    },
+    // add more properties and values for the identifier
+    "schema:model": "HRS-750",
+    "schema:manufacturer": {
+      "@type": "schema:Organization",
+      "@id": "https://www.princetoninstruments.com/",
+      "schema:name": "Teledyne Princeton Instruments"
+    },
+    "schema:owner": {
+      "@type": "schema:Organization",
+      "@id": "https://ror.org/03s53g630",
+      "schema:name": "NSF MagLab"
+    }
+  },
+  "pidinst:hasIdentifierInstanceType": {
+    "@type": "pidinst:IdentifierInstanceType",
+    "@id": "https://example.org/hrs750-instance-type",
+    "rdfs:label": "Metadata"
+  },
+  "pidinst:hasIdentifierInstanceValue": {
+    "@type": "schema:Dataset",
+    "@id": "https://example.org/hrs750-metadata",
+    // add more properties and values for the dataset
+    // use placeholders for unknown values
+    // use schema properties from https://schema.org/Dataset
+    // use pidinst properties from http://pidinst.org/
+    // use rdfs properties from http://www.w3.org/2000/01/rdf-schema#
+    // use xsd datatypes from http://www.w3.org/2001/XMLSchema#
+    // use @language for language tags
+    // use @value for literal values
+    // use @type for typed values
+    // use @id for references to other resources
+    // use [] for arrays of values
+    // use {} for nested objects
+    // use // for comments
+    // example:
+    
+    // schema:name property with a literal value and a language tag
+    // schema:name: {
+      "@value": "Metadata about Teledyne Princeton Instruments HRS750",
+      "@language": "en"
+     },
+
+     // schema:description property with a literal value and a language tag
+     schema:description: {
+       "@value": "This dataset contains metadata about the instrument, such as its specifications, location, owner, and usage.",
+       "@language": "en"
+     },
+
+     // schema:dateCreated property with a typed value and a datatype
+     schema:dateCreated: {
+       "@value": "<placeholder for date>",
+       "@type": xsd:date
+     },
+
+     // schema:distribution property with an array of nested objects
+     schema:distribution: [
+       {
+         "@type":"schema:DataDownload",
+         "@id":"<placeholder for download URL>",
+         schema:name:"<placeholder for download name>",
+         schema:description:"<placeholder for download description>",
+         schema:contentUrl:"<placeholder for download URL>",
+         schema:encodingFormat:"<placeholder for file format>"
+       },
+       // add more objects if needed
+     ],
+
+     // pidinst:hasInstrument property with a reference to another resource
+     pidinst:hasInstrument:{
+       "@id":"https://example.org/hrs750-id"
+     }
+     
+  },
+  // add more properties and values as placeholders
+}

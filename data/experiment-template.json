@@ -1,0 +1,216 @@
+{
+    "@context": {
+      "schema": "http://schema.org/",
+      "qudt": "http://qudt.org/schema/qudt/",
+      "sosa": "http://www.w3.org/ns/sosa/",
+      "pidinst": "https://www.pidinst.org/schema/"
+    },
+    "@type": "Experiment",
+    "name": "Re_InSe_0T_5K_SC-20%_600meV_50um_5sec_0.65NA_Gate Sweep -10V to +20V",
+    "description": "An experiment to measure the reflectance of InSe at 0T and 5K using a supercontinuum light source at 20% power and 600 meV energy.",
+    "experimentId": "P19401-E011-DC",
+    "startDate": "2023-02-12",
+    "instrument": {
+      "@type": ["sosa:Platform", "pidinst:InstrumentInstance"],
+      "name": "#1 HRS750",
+      "identifier": {
+        "@type": ["schema:PropertyValue", "pidinst:PID"],
+        "@value": "https://identifiers.org/pidinst/instrument-instance/example-1234"
+      },
+      "instrumentType": {
+        "@type": ["schema:Class", "pidinst:InstrumentType"],
+        "@id": "<some URL>",
+        "name": "<some name>",
+        "instrumentTypeIdentifier": {
+          "@type": ["schema:PropertyValue", "pidinst:PID"],
+          "@value": "<some PID>"
+        }
+      },
+      "manufacturer": {
+        "@type": ["schema:Organization", "pidinst:Manufacturer"],
+        "@id": "<some URL>",
+        "name": "<some name>"
+      },
+      "softwareAgent": {
+        "@type": ["schema:SoftwareApplication", "prov:SoftwareAgent"],
+        "@id": "<some URL>",
+        "name": "LightField",
+        "version": "<some version>",
+        "operatingSystem": "<some OS>",
+        "applicationCategory": "<some category>"
+      },
+      "sensor": {
+        "@type": ["sosa:Sensor", "pidinst:SensorInstance"],
+        "@id": "<some URL>",
+        "name": "<some name>",
+        "identifier": {
+          "@type": ["schema:PropertyValue", "pidinst:PID"],
+          "@value": "<some PID>"
+        },
+        "sensorType": {
+          "@type": ["schema:Class", "pidinst:SensorType"],
+          "@id": "<some URL>",
+          "name": "<some name>",
+          "sensorTypeIdentifier": {
+            "@type": ["schema:PropertyValue", "pidinst:PID"],
+            "@value": "<some PID>"
+          }
+        },
+        "manufacturer": {
+          "@type": ["schema:Organization", "pidinst:Manufacturer"],
+          "@id": "<some URL>",
+          "name": "<some name>"
+        },
+        "observes": {
+          "@type": ["qudt:QuantityKind", "schema:Class"],
+          "additionalType": {
+            "@id": "qudt:Reflectance"
+          }
+        }
+      }
+    },
+    "measuredVariable": {
+      "@type": "schema:PropertyValue",
+      "name": "Reflectance",
+      "additionalType": {
+        "@id": "qudt:Reflectance"
+      }
+    },
+    "measuredValue": {
+      "@type": "qudt:QuantityValue",
+      "numericValue": "<some value>",
+      "unit": {
+        "@id": "qudt:<some unit>"
+      }
+    },
+    "experimentalCondition": {
+      "@type": "schema:Intangible",
+      "name": "Magnetic field",
+      "value": {
+        "@type": "qudt:QuantityValue",
+        "numericValue": "0",
+        "unit": {
+          "@id": "qudt:Tesla"
+        }
+      }
+    },
+    "experimentalCondition2": {
+      "@type": "schema:Intangible",
+      "name": "Temperature",
+      "value": {
+        "@type": "qudt:QuantityValue",
+        "numericValue": "5",
+        "unit": {
+          "@id": "qudt:Kelvin"
+        }
+      }
+    },
+    "experimentalCondition3": {
+      "@type": "schema:Intangible",
+      "name": "Light source",
+      "value": {
+        "@type": "schema:Intangible",
+        "name": "Supercontinuum light source",
+        "additionalProperty1": {
+          "@type": "schema:Intangible",
+          "name": "Power",
+          "value": {
+            "@type": "qudt:QuantityValue",
+            "numericValue": "20",
+            "unit": {
+              "@id": "qudt:<some unit>"
+            }
+          }
+        },
+        "additionalProperty2": {
+          "@type": "schema:Intangible",
+          "name": "Energy",
+          "value": {
+            "@type": "qudt:QuantityValue",
+            "numericValue": "600",
+            "unit": {
+              "@id": "qudt:<some unit>"
+            }
+          }
+        }
+      }
+    },
+    "experimentalCondition4": {
+      "@type": "schema:Intangible",
+      "name": "Slit width",
+      "value": {
+        "@type": "qudt:QuantityValue",
+        "numericValue": "50",
+        "unit": {
+          "@id": "qudt:<some unit>"
+        }
+      }
+    },
+    "experimentalCondition5": {
+      "@type": "schema:Intangible",
+      "name": "Acquisition time",
+      "value": {
+        "@type": "qudt:QuantityValue",
+        "numericValue": "5",
+        "unit": {
+          "@id": "qudt:<some unit>"
+        }
+      }
+    },
+    "experimentalCondition6": {
+      "@type": "schema:Intangible",
+      "name": "Objective NA",
+      "value": {
+        "@type": "qudt:QuantityValue",
+        "numericValue": "0.65"
+      }
+    },
+    "experimentalCondition7": {
+      "@type": "schema:Intangible",
+      "name": "Gate voltage sweep range",
+      "value": {
+        "@type": "qudt:QuantityRange",
+        "minInclusiveNumericValue": "-10",
+        "maxInclusiveNumericValue": "+20",
+        "unit": {
+          "@id": "qudt:<some unit>"
+        }
+      }
+    },
+    "sample": {
+      "@type": ["sosa:FeatureOfInterest", "schema:Product"],
+      "identifier1": {
+        "@type": ["RRID", "schema:PropertyValue"],
+        "value": "<some RRID>"
+      },
+      "additionalProperty1": {
+        "@type": ["RRID", "schema:PropertyValue"],
+        "value": "<some RRID>"
+      },
+      "additionalProperty2": {
+        "@type": ["RRID", "schema:PropertyValue"],
+        "value": "<some RRID>"
+      }
+    },
+    "agent": [
+      {
+        "@type": ["ORCID", "schema:Person"],
+        "identifier": {
+          "@type": ["ORCID", "schema:PropertyValue"],
+          "value": "https://orcid.org/0000-0002-1825-0097"
+        },
+        "role": {
+          "@type": "schema:Role",
+          "roleName": "Principal Investigator"
+        }
+      }
+    ],
+    "location": {
+      "@type": ["ROR", "schema:Place"],
+      "identifier": {
+        "@type": ["ROR", "schema:PropertyValue"],
+        "value": "https://ror.org/03s53g630"
+      }
+    }
+  }
+  
