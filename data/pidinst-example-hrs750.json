@@ -1,0 +1,71 @@
+{
+    "Identifier": {
+      "identifierValue": "http://hdl.handle.net/21.T11998/HRS750-0000-001C-328B-D-STAGE-TEST",
+      "identifierType": "Handle"
+    },
+    "SchemaVersion": "1.0",
+    "LandingPage": "https://localhost.localdomain/devices/1",
+    "Name": "#1 HRS750 Teledyne Princeton Instruments",
+    "Owner": [
+      {
+        "ownerName": "John Doe",
+        "ownerContact": "j.doe@teledyne.com",
+        "ownerIdentifierType": "ORCID",
+        "ownerIdentifierValue": "https://orcid.org/0000-0003-0214-1336"
+      },
+      {
+        "ownerName": "Teledyne Princeton Instruments",
+        "ownerContact": "info@teledyne.com",
+        "ownerIdentifierValue": "https://ror.org/000h6jb29",
+        "ownerIdentifierType": "ROR"
+      }
+    ],
+    "Manufacturer": [
+      {
+        "manufacturerName": "Teledyne Princeton Instruments",
+        "manufacturerIdentifierType": "URL",
+        "manufacturerIdentifierValue": "https://www.princetoninstruments.com/"
+      }
+    ],
+    "Model": {
+      "modelName": "HRS750",
+      "modelIdentifierType": "Handle",
+      "modelIdentifierValue": "http://hdl.handle.net/21.T11998/0000-001C-328C"
+    },
+    "Description": "High resolution spectrometer developed by Teledyne Princeton Instruments.",
+    "InstrumentType": [
+      {
+        "instrumentTypeName": "Spectrometer",
+        "instrumentTypeIdentifierType": "URL",
+        "instrumentTypeIdentifierValue": "http://vocabs.lter-europe.net/EnvThes/20354"
+      }
+    ],
+    "MeasuredVariable": [
+      "spectral data"
+    ],
+    "Date": [
+      {
+        "dateValue": "2021-01-01",
+        "dateType": "Commissioned"
+      },
+      {
+        "dateValue": "2022-09-09",
+        "dateType": "DeCommissioned"
+      }
+    ],
+    "RelatedIdentifier": [
+      {
+        "relatedIdentifierName": "technical documentation",
+        "relationType": "IsDescribedBy",
+        "relatedIdentifierType": "DOI",
+        "relatedIdentifierValue": "https://doi.org/10.5281/zenodo.5888547"
+      }
+    ],
+    "AlternateIdentifier": [
+      {
+        "alternateIdentifierType": "SerialNumber",
+        "alternateIdentifierValue": "1234-4234-\\937 A"
+      }
+    ]
+  }
+  

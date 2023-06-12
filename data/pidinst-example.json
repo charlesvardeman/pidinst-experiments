@@ -1,0 +1,76 @@
+{
+    "Identifier": {
+      "identifierValue": "http://hdl.handle.net/21.T11998/SMS-0000-001C-328B-D-STAGE-TEST",
+      "identifierType": "Handle"
+    },
+    "SchemaVersion": "1.0",
+    "LandingPage": "https://localhost.localdomain/devices/1",
+    "Name": "UFZ MET Soil Sensor 1",
+    "Owner": [
+      {
+        "ownerName": "Kollai, Helen",
+        "ownerContact": "h.kollai@ufz.de",
+        "ownerIdentifierType": "ORCID",
+        "ownerIdentifierValue": "https://orcid.org/0000-0003-0214-1336"
+      },
+      {
+        "ownerName": "Helmholtz Centre for Environmental Research",
+        "ownerContact": "info@ufz.de",
+        "ownerIdentifierValue": "https://ror.org/000h6jb29",
+        "ownerIdentifierType": "ROR"
+      }
+    ],
+    "Manufacturer": [
+      {
+        "manufacturerName": "Helmholtz Centre for Environmental Research Electronics Unit",
+        "manufacturerIdentifierType": "URL",
+        "manufacturerIdentifierValue": "https://www.ufz.de/"
+      }
+    ],
+    "Model": {
+      "modelName": "Perfect Sense 1.0",
+      "modelIdentifierType": "Handle",
+      "modelIdentifierValue": "http://hdl.handle.net/21.T11998/0000-001C-328C"
+    },
+    "Description": "Soil moisture and temperature sensor developed by UFZ.",
+    "InstrumentType": [
+      {
+        "instrumentTypeName": "Soil Moisture Sensor",
+        "instrumentTypeIdentifierType": "URL",
+        "instrumentTypeIdentifierValue": "http://vocabs.lter-europe.net/EnvThes/20354"
+      },
+      {
+        "instrumentTypeName": "Soil Temperature Sensor",
+        "instrumentTypeIdentifierValue": "http://vocabs.lter-europe.net/EnvThes/20357",
+        "instrumentTypeIdentifierType": "URL"
+      }
+    ],
+    "MeasuredVariable": [
+      "soil moisture",
+      "soil temperature"
+    ],
+    "Date": [
+      {
+        "dateValue": "2021-01-01",
+        "dateType": "Commissioned"
+      },
+      {
+        "dateValue": "2022-09-09",
+        "dateType": "DeCommissioned"
+      }
+    ],
+    "RelatedIdentifier": [
+      {
+        "relatedIdentifierName": "technical documentation",
+        "relationType": "IsDescribedBy",
+        "relatedIdentifierType": "DOI",
+        "relatedIdentifierValue": "https://doi.org/10.5281/zenodo.5888547"
+      }
+    ],
+    "AlternateIdentifier": [
+      {
+        "alternateIdentifierType": "SerialNumber",
+        "alternateIdentifierValue": "1234-4234-\\937 A"
+      }
+    ]
+  }

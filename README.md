@@ -7,7 +7,14 @@ schema and the creation of a simple ontology based on it. The schema is
 available at
 [rdawg-pidinst](https://github.com/rdawg-pidinst/schema/blob/master/schema.rst).
 The ontology is available at [pidinst.ttl](./data/pidinst.ttl) as well
-as SHACL shapes at [pidinst-shapes.ttl](./data/pidinst-shapes.ttl).
+as SHACL shapes at [pidinst-shapes.ttl](./data/pidinst-shapes.ttl). It
+contains a sample pidinst JSON schema extracted from the [ODIS
+Architecture GitHub
+Issue](https://github.com/iodepo/odis-arch/issues/68#issuecomment-1353075204)
+in the file [pidinst-schema.json](./data/pidinst-schema.json) and
+[pidinst-example.json](./data/pidinst-example.json) which is a sample
+instance of the schema. A data prototype is in the Sarowar Hossain
+[Github repository](https://github.com/shmishkat/DataPrototype).
 
 ## Tools
 
@@ -17,6 +24,34 @@ as SHACL shapes at [pidinst-shapes.ttl](./data/pidinst-shapes.ttl).
   using:
   - [pyshacl](https://github.com/RDFLib/pySHACL) for SHACL validation
   - [rdflib](https://github.com/RDFLib/rdflib) for RDF manipulation
+
+## Thematic references in sample data
+
+The sample data provided has the following semantic themes that
+potentially map to persistent identifiers:
+
+- Observation
+  ([sosa:Observation](https://www.w3.org/TR/vocab-ssn/#SOSAObservation),
+  [schema:Observation](https://schema.org/Observation))
+- Experiment (Activity)
+- Instrument (PIDINST, sosa, [handle.net registry](https://handle.net/))
+- Sample (RRID)
+- Agent (Person, Organization, Software)
+  - Person (ORCID)
+  - Organization (ROR)
+  - Software ([SBoM](https://spdx.dev/),
+    [Codemeta](https://github.com/codemeta/codemeta) )
+- Location ([w3c locn](https://www.w3.org/ns/locn),
+  [schema.org](https://schema.org/location))
+- Dataset (DOI)
+
+Thematically, we have something that is defined as an
+[Affordance](https://w3c.github.io/wot-architecture/#sec-affordances) in
+terms of variables that we can measure (this is confusing LLM agents and
+potential instrument settings. We need a specification of these
+“affordances” in the PIDINST doc. This is separate from the the settings
+that were used in the “Observation” which is an instantiation of a
+particular set of affordances in a “Activity” that is an experiment.
 
 ## References
 
@@ -29,8 +64,6 @@ as SHACL shapes at [pidinst-shapes.ttl](./data/pidinst-shapes.ttl).
     Instruments](https://zenodo.org/record/6396467#.ZFOkCIrMKcJ)
 - [Data
   Prototype](https://docs.google.com/document/d/1RRKxzwOW2SMn2bRAESBvnf7MmAmYy4itTrxaCFQrSOM/edit#heading=h.x8a40zxbykh3)
-- [PIDInst JSON
-  Schema](https://github.com/iodepo/odis-arch/issues/68#issuecomment-1353075204)
 - [12. Linking instrument PIDs to datasets — PIDINST
   1.0b2.dev32+g510a615
   documentation](https://docs.pidinst.org/en/latest/white-paper/linking-datasets.html)
@@ -54,11 +87,25 @@ as SHACL shapes at [pidinst-shapes.ttl](./data/pidinst-shapes.ttl).
   - [RDA iAdopt Github](https://github.com/i-adopt)
   - [RDA iAdopt Github - Ontology](https://github.com/i-adopt/ontology)
 
+## Development of the [Ocean Data and Information System (ODIS)](https://github.com/iodepo/odis-arch) architecture
+
+- [International Oceanographic Data and Information
+  Exchange](https://www.iode.org/)
+- [PIDInst JSON
+  Schema](https://github.com/iodepo/odis-arch/issues/68#issuecomment-1353075204)
+- [EarthCube p418 JSON Schema to
+  JSON-LD](https://github.com/earthcubearchitecture-project418/p418Docs/blob/master/publishing.md#developing-a-workflow-for-non-technical-authors)
+
 ## Science on Schema.org
 
 - [Science on Schema.org](https://science-on-schema.org/)
 - [Experimental](https://github.com/ESIPFed/science-on-schema.org/blob/master/guides/Experimental.md)
 - [DataSet](https://github.com/ESIPFed/science-on-schema.org/blob/master/guides/Dataset.md)
+
+## Schema.org IoT
+
+- [IoT and Schema.org: Getting
+  Started](https://schema.org/docs/iot-gettingstarted.html)
 
 ## BioSchemas
 

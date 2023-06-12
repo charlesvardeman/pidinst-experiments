@@ -1,0 +1,275 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+	"title": "PIDinst schema 1.0",
+	"description": "Describes a schema for metadata conforming to the PIDinst metadata schema 1.0",
+	"additionalProperties": false,
+	"$comment": "Schema drafted by Helen Kollai (https://orcid.org/0000-0003-0214-1336), 2022-09-09",
+    "definitions": {
+        "instrumentTypeIdentifier": {
+            "type": "object",
+            "properties": {
+                "instrumentTypeIdentifierValue": {"type": "string"},
+                "instrumentTypeIdentifierType": {"$ref": "#/definitions/identifierType"}
+            },
+            "required": ["instrumentTypeIdentifierValue", "instrumentTypeIdentifierType"]
+        },			
+        "dateValue": {
+            "type": "string",
+            "anyOf": [
+                {"format": "year"},
+                {"format": "yearmonth"},
+                {"format": "date"},
+                {"format": "datetime"}
+            ]
+        },
+        "dateType": {
+            "type": "string",
+            "enum": [
+                "Commissioned",
+                "DeCommissioned"
+            ]
+        },
+        "identifierType": {
+			"anyOf":[
+				{"type": "string"},
+				{"enum": [
+					"ARK",
+					"arXiv",
+					"bibcode",
+					"DOI",
+					"EAN13",
+					"EISSN",
+					"Handle",
+					"IGSN",
+					"ISBN",
+					"ISSN",
+					"ISTC",
+					"LISSN",
+					"LSID",
+					"PMID",
+					"PURL",
+					"UPC",
+					"URL",
+					"URN",
+					"w3id"
+				]}
+			]
+        },
+        "relatedIdentifierType": {
+            "type": "string",
+            "enum": [
+                "ARK",
+                "arXiv",
+                "bibcode",
+                "DOI",
+                "EAN13",
+                "EISSN",
+                "Handle",
+                "IGSN",
+                "ISBN",
+                "ISSN",
+                "ISTC",
+                "LISSN",
+                "LSID",
+                "PMID",
+                "PURL",
+                "UPC",
+                "URL",
+                "URN",
+                "w3id"
+            ]
+        },
+        "alternateIdentifierType": {
+            "type": "string",
+            "enum": [
+                "SerialNumber",
+                "InventoryNumber",
+                "Other"
+            ]
+        },		
+        "relationType": {
+            "type": "string",
+            "enum": [
+                "IsDescribedBy",
+				"HasMetadata",
+                "IsNewVersionOf",
+                "IsPreviousVersionOf",
+                "IsComponentOf",
+                "HasComponent",
+                "References",
+                "IsIdenticalTo",
+                "IsAttachedTo",
+				"WasUsedIn"
+            ]
+        },
+        "Url": { "format": "uri", "pattern": "^http(s)?:(\\/\\/([^/?#]*))?([^?#]*)(\\?([^#]*))?(#(.*))?$" }  
+    },
+
+    "type": "object",
+
+    "properties": {
+        "Identifier": {
+            "type": "object",
+			"title": "Identifier",
+			"description": "Unique string that identifies the instrument instance",
+            "properties": {
+                "identifierValue": {"type": "string"},
+                "identifierType": {"$ref": "#/definitions/identifierType"}
+            },
+            "required": ["identifierValue", "identifierType"],
+			"uniqueItems": true
+        },
+        "SchemaVersion": {
+            "type": "string",
+            "const": "1.0"
+        },
+        "LandingPage": {
+            "type": "string",
+            "$ref": "#/definitions/Url"
+        },
+        "Name": {
+            "type": "string"
+        },		
+        "Owner": {
+			"title": "Owner",
+			"description": "Institution(s) responsible for the management of the instrument. This may include the legal owner, the operator, or an institute providing access to the instrument.",
+            "type": "array",
+            "items": { 
+				"type": "object",
+				"properties": {
+					"ownerName": {"type": "string"},
+					"ownerContact": {"type": "string", "format": "email"},
+					"ownerIdentifierValue": {"type": "string"},					
+					"ownerIdentifierType": {"$ref": "#/definitions/identifierType"}
+				},
+				"required": ["ownerName"],
+				"dependentRequired": {
+					"ownerIdentifierValue": ["ownerIdentifierType"],
+					"ownerIdentifierType": ["ownerIdentifierValue"]
+				}
+            },
+			"minItems": 1, 
+            "uniqueItems": true
+        },
+        "Manufacturer": {
+			"title": "Manufacturer",
+			"description": "The instrument’s manufacturer(s) or developer. This may also be the owner for custom-build instruments.",
+            "type": "array",
+            "items": {		
+				"type": "object",
+				"properties": {
+					"manufacturerName": {"type": "string"},
+					"manufacturerIdentifierValue": {"type": "string"},					
+					"manufacturerIdentifierType": {"$ref": "#/definitions/identifierType"}
+				},
+				"required": ["manufacturerName"],
+				"dependentRequired": {
+					"manufacturerIdentifierValue": ["manufacturerIdentifierType"],
+					"manufacturerIdentifierType": ["manufacturerIdentifierValue"]
+				}
+			},
+			"minItems": 1,
+			"uniqueItems": true
+        },
+        "Model": {
+			"title": "Model",
+			"description": "Name of the model or type of device as attributed by the manufacturer.",
+            "type": "object",
+            "properties": {
+                "modelName": {"type": "string"},
+				"modelIdentifierValue": {"type": "string"},					
+				"modelIdentifierType": {"$ref": "#/definitions/identifierType"}
+            },
+            "required": ["modelName"],
+			"dependentRequired": {
+			"modelIdentifierValue": ["modelIdentifierType"],
+			"modelIdentifierType": ["modelIdentifierValue"]
+			}
+        },
+        "Description": {
+            "type": "string"
+        },			
+        "InstrumentType": {
+			"title": "Instrument Type",
+			"description": "Classification of the type of the instrument.",
+            "type": "array",
+            "items": {
+                "type": "object",
+                "properties": {
+                    "instrumentTypeName": {"type": "string"},
+                    "instrumentTypeIdentifierValue": {"type": "string"},					
+                    "instrumentTypeIdentifierType": {"$ref": "#/definitions/identifierType"}
+                },
+                "required": ["instrumentTypeName"],
+				"dependentRequired": {
+					"instrumentTypeIdentifierValue": ["instrumentTypeIdentifierType"],
+					"instrumentTypeIdentifierType": ["instrumentTypeIdentifierValue"]
+				}
+            },
+            "uniqueItems": true
+        },
+        "MeasuredVariable": {
+			"title": "Measured Variable",
+			"description": "The variable(s) that this instrument measures or observes.",
+            "type": "array",
+            "items": {
+                "type": "string"
+            },
+            "uniqueItems": true
+        },		
+        "Date": {
+			"title": "Date",
+			"description": "Dates relevant to the instrument.",
+            "type": "array",
+            "items": {
+                "type": "object",
+                "properties": {
+                    "dateValue": {"$ref": "#/definitions/dateValue"},
+                    "dateType": {"$ref": "#/definitions/dateType"}
+                },
+                "required": ["dateValue", "dateType"]
+            },
+            "uniqueItems": true
+        },
+        "RelatedIdentifier": {
+			"title": "Related Identifier",
+			"description": "Identifiers of related resources.",
+            "type": "array",
+            "items": {
+                "type": "object",
+                "properties": {
+                    "relatedIdentifierName": {"type": "string"},
+					"relationType": {"$ref": "#/definitions/relationType"},
+                    "relatedIdentifierValue": {"type": "string"},					
+                    "relatedIdentifierType": {"$ref": "#/definitions/relatedIdentifierType"}
+                },
+                "required": ["relatedIdentifierValue", "relatedIdentifierType"]
+            },
+            "uniqueItems": true
+        },		
+        "AlternateIdentifier": {
+			"title": "Alternate Identifier",
+			"description": "Identifiers other than the PIDINST pertaining to the same instrument instance. This should be used if the instrument has a serial number. Other possible uses include an owner’s inventory number or an entry in some instrument data base.",
+            "type": "array",
+            "items": {
+                "type": "object",
+                "properties": {
+                    "alternateIdentifierName": {"type": "string"},
+                    "alternateIdentifierValue": {"type": "string"},					
+                    "alternateIdentifierType": {"$ref": "#/definitions/alternateIdentifierType"}
+                },
+                "required": ["alternateIdentifierValue", "alternateIdentifierType"]
+            },
+            "uniqueItems": true
+        }
+    },
+
+    "required": [
+        "Identifier",
+        "SchemaVersion",		
+        "LandingPage",
+        "Name",
+        "Owner",
+        "Manufacturer"
+    ]
+}

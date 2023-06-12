@@ -1,0 +1,45 @@
+{
+    "@context": {
+      "Identifier": "https://schema.org/identifier",
+      "SchemaVersion": "https://schema.org/version",
+      "LandingPage": "https://schema.org/mainEntityOfPage",
+      "Name": "https://schema.org/name",
+      "Owner": "https://schema.org/owner",
+      "ownerName": "https://schema.org/name",
+      "ownerContact": "https://schema.org/contactPoint",
+      "ownerIdentifierType": "https://schema.org/additionalType",
+      "ownerIdentifierValue": "https://schema.org/identifier",
+      "Manufacturer": "https://schema.org/manufacturer",
+      "manufacturerName": "https://schema.org/name",
+      "manufacturerIdentifierType": "https://schema.org/additionalType",
+      "manufacturerIdentifierValue": "https://schema.org/identifier",
+      "Model": "https://schema.org/ProductModel",
+      "modelName": "https://schema.org/name",
+      "modelIdentifierType": "https://schema.org/additionalType",
+      "modelIdentifierValue": "https://schema.org/identifier",
+      "Description": "https://schema.org/description",
+      "InstrumentType": "https://schema.org/additionalType",
+      "instrumentTypeName": "https://schema.org/name",
+      "instrumentTypeIdentifierType": "https://schema.org/additionalType",
+      "instrumentTypeIdentifierValue": "https://schema.org/identifier",
+      "MeasuredVariable": "https://schema.org/variableMeasured",
+      "Date": "https://schema.org/Date",
+      "dateValue": "https://schema.org/date",
+      "dateType": "https://schema.org/additionalType",
+      "RelatedIdentifier": "https://schema.org/identifier",
+      "relatedIdentifierName": "https://schema.org/name",
+      "relationType": "https://schema.org/additionalType",
+      "relatedIdentifierType": "https://schema.org/additionalType",
+      "relatedIdentifierValue": "https://schema.org/identifier",
+      "AlternateIdentifier": "https://schema.org/alternateName",
+      "alternateIdentifierType": "https://schema.org/additionalType",
+      "alternateIdentifierValue": "https://schema.org/identifier"
+    },
+    "Identifier": {
+      "identifierValue": "http://hdl.handle.net/21.T11998/SMS-0000-001C-328B-D-STAGE-TEST",
+      "identifierType": "Handle"
+    },
+    "SchemaVersion": "1.0",
+    ...
+  }
+  
