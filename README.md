@@ -44,6 +44,18 @@ potentially map to persistent identifiers:
 - Location ([w3c locn](https://www.w3.org/ns/locn),
   [schema.org](https://schema.org/location))
 - Dataset (DOI)
+- Physical Parameters: There are various physical parameters involved in
+  the experiments, such as type of experiment (PL, Ra, Re, Tr), sample
+  name, magnetic field, temperature, light source, power, central
+  frequency/wavelength/energy, slit value, acquisition time, objective
+  numerical aperture (NA), and others like gate voltage, pressure.
+  Ontology patterns representing these physical parameters, their units
+  of measurement (T, K, nm, mW/uW/%, cm-1/nm/eV, um, min/sec, NA, V),
+  and their roles in the experiment would be necessary.
+- Experimental Procedure: The narrative also implies a certain procedure
+  or workflow that is followed in conducting the experiments and saving
+  the data. This could be represented by an ontology pattern describing
+  scientific procedures or workflows.
 
 Thematically, we have something that is defined as an
 [Affordance](https://w3c.github.io/wot-architecture/#sec-affordances) in
@@ -52,6 +64,41 @@ potential instrument settings. We need a specification of these
 “affordances” in the PIDINST doc. This is separate from the the settings
 that were used in the “Observation” which is an instantiation of a
 particular set of affordances in a “Activity” that is an experiment.
+
+``` mermaid
+graph LR
+    subgraph "Agent"
+        P[Person] -. "rdfs:subClassOf" .-> A[Agent]
+        O[Organization] -. "rdfs:subClassOf" .-> A
+        S[Software] -. "rdfs:subClassOf" .-> A
+    end
+    subgraph "Entity"
+        I[Instrument] -. "rdfs:subClassOf" .-> E[Entity]
+        Sm[Sample] -. "rdfs:subClassOf" .-> E
+        D[Dataset] -. "rdfs:subClassOf" .-> E
+        PP[PhysicalParameters] -. "rdfs:subClassOf" .-> E
+    end
+    subgraph "Activity"
+        Ob[Observation] -. "rdfs:subClassOf" .-> Act[Activity]
+        Ex[Experiment] -. "rdfs:subClassOf" .-> Act
+    end
+    subgraph "Plan"
+        EP[ExperimentalProcedure] -. "rdfs:subClassOf" .-> Pl[Plan]
+    end
+
+    P -- "prov:wasAssociatedWith" --> Ob
+    Ob -- "prov:wasPartOf" --> Ex
+    I -- "prov:used" --> Ob
+    Sm -- "prov:used" --> Ob
+    D -- "prov:wasGeneratedBy" --> Ob
+    O -- "prov:actedOnBehalfOf" --> P
+    S -- "prov:actedOnBehalfOf" --> I
+    L[Location] -- "prov:atLocation" --> Ob
+    L -- "prov:atLocation" --> I
+    L -- "prov:atLocation" --> Sm
+    PP -- "prov:used" --> Ob
+    EP -- "prov:wasUsedBy" --> Ex
+```
 
 ## References
 
@@ -199,6 +246,54 @@ Re_InSe_0T_5K_SC-20%*600meV_50um_5sec* 0.65NA_Gate Sweep -10V to
 > Ra_CsPr_30T_7.2K_532nm-2mW_550cm-1_30um_3x2min_0.82NA.SPE
 > Re_InSe_0T_5K_SC-20%*600meV_50um_5sec* 0.65NA_Gate Sweep -10V to
 > +20V.SPE
+
+The narrative describes a complex experimental setup involving various
+physical parameters, instruments, and naming conventions. Here are the
+key themes or components present in the narrative, along with
+corresponding ontology patterns that might be necessary to describe
+them:
+
+1.  **Instruments**: Spectrometers (#1 HRS750, \#2 IsoPlane, Teledyne
+    Princeton Instruments) and the controlling software (LightField
+    software). This would require an ontology pattern that describes
+    scientific instruments, their models, manufacturers, and associated
+    software.
+
+2.  **Experimental Data**: The acquired data and experiment settings
+    saved in a `.spe` file. An ontology pattern representing data
+    objects, their formats (`.spe`), and the parameters/settings they
+    contain would be necessary.
+
+3.  **File and Directory Naming Conventions**: The narrative describes a
+    detailed naming convention for both directories and files. This
+    could be represented using an ontology pattern that encapsulates the
+    structure and semantics of these naming conventions.
+
+4.  **Physical Parameters**: There are various physical parameters
+    involved in the experiments, such as type of experiment (PL, Ra, Re,
+    Tr), sample name, magnetic field, temperature, light source, power,
+    central frequency/wavelength/energy, slit value, acquisition time,
+    objective numerical aperture (NA), and others like gate voltage,
+    pressure. Ontology patterns representing these physical parameters,
+    their units of measurement (T, K, nm, mW/uW/%, cm-1/nm/eV, um,
+    min/sec, NA, V), and their roles in the experiment would be
+    necessary.
+
+5.  **Experimental Procedure**: The narrative also implies a certain
+    procedure or workflow that is followed in conducting the experiments
+    and saving the data. This could be represented by an ontology
+    pattern describing scientific procedures or workflows.
+
+6.  **Samples**: Different samples are used in the experiments, as seen
+    in the file naming convention. An ontology pattern representing
+    scientific samples, their types, and characteristics would be
+    needed.
+
+Remember, the role of an ontology is to provide a common framework for
+representing knowledge. Depending on the complexity and specific
+requirements of your use case, you might use existing ontologies (like
+the OBO Foundry ontologies), or develop custom ontologies tailored to
+your needs.
 
 ## LLMs
 
