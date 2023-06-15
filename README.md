@@ -15,6 +15,8 @@ in the file [pidinst-schema.json](./data/pidinst-schema.json) and
 [pidinst-example.json](./data/pidinst-example.json) which is a sample
 instance of the schema. A data prototype is in the Sarowar Hossain
 [Github repository](https://github.com/shmishkat/DataPrototype).
+Analysis was done with ChatGPT GPT-4 with bing web plugin for Retrieval
+Augmented Generation.
 
 ## Tools
 
@@ -24,8 +26,50 @@ instance of the schema. A data prototype is in the Sarowar Hossain
   using:
   - [pyshacl](https://github.com/RDFLib/pySHACL) for SHACL validation
   - [rdflib](https://github.com/RDFLib/rdflib) for RDF manipulation
+- [nbdev](https://nbdev.fast.ai/)
+
+## Sample Use Case
+
+The owner of the instrument is the NSF facility MagLab
+(https://ror.org/03s53g630). Josiah Carberry’s
+(https://orcid.org/0000-0002-1825-0097) data acquisition info:
+
+The experimental data (spectra) are acquired by a spectrometer (#1
+HRS750, \#2 IsoPlane, Teledyne Princeton Instruments). The spectrometers
+are (almost) fully automated and controlled via the LightField software
+(Teledyne Princeton Instruments). LightField automatically saves the
+acquired data and all experiment settings (spectrometer settings) in one
+file.
+https://www.princetoninstruments.com/products/software-family/lightfield
+
+LightField saves files in \*.SPE format (whatever it means).
+
+DS’ file- / folder- name convention:
+
+Folder name: PI name_Experiment ID_Magnet system-Instrument_Start date
+
+      Josiah_Carberry_P19401-E011-DC_SCM3-HRS750_02-12-2023
+      Josiah_Carberry_none_B114-IsoPlane_02-12-2023
+
+File name: Type of the experiment: PL, Ra(man), Re(flectance),
+Tr(ansmittance) Sample short name: \*\*\*\* Magnetic field: ***T (or
+from to ) Temperature: ***K Light source: SC, 532nm, 785nm, … - Power:
+***mW or uW, or percentage Central frequency / wl/energy: ***cm-1, nm,
+eV Slit: value: \*\*\* um Acq.time: ***min or sec Objective NA: ***NA
+Other: gate voltage, pressure, …
+
+PL_WSe2-MoSe2_00.0T_to_05.2T\_
+10K_633nm-100uW_720nm_30um_2min_0.65NA.SPE
+Ra_CsPr_30T_7.2K_532nm-2mW_550cm-1_30um_3x2min_0.82NA.SPE
+Re_InSe_0T_5K_SC-20%*600meV_50um_5sec* 0.65NA_Gate Sweep -10V to
++20V.SPE
 
 ## Thematic references in sample data
+
+ChatGPT was used to do the thematic analysis of the sample data.
+[PIDINST
+JSON](https://chat.openai.com/share/2e4ef2c4-23e8-4f14-aca5-96bb2d0346af)
+is the link to the chat.
 
 The sample data provided has the following semantic themes that
 potentially map to persistent identifiers:
@@ -328,42 +372,6 @@ graph LR
 - [SBoMs](https://www.ntia.gov/sbom)
 - [CyberSecurity and SBoMs](https://www.cisa.gov/sbom)
 
-## Sample Use Case
-
-The owner of the instrument is the NSF facility MagLab
-(https://ror.org/03s53g630). Josiah Carberry’s
-(https://orcid.org/0000-0002-1825-0097) data acquisition info:
-
-The experimental data (spectra) are acquired by a spectrometer (#1
-HRS750, \#2 IsoPlane, Teledyne Princeton Instruments). The spectrometers
-are (almost) fully automated and controlled via the LightField software
-(Teledyne Princeton Instruments). LightField automatically saves the
-acquired data and all experiment settings (spectrometer settings) in one
-file.
-https://www.princetoninstruments.com/products/software-family/lightfield
-
-LightField saves files in \*.SPE format (whatever it means).
-
-DS’ file- / folder- name convention:
-
-Folder name: PI name_Experiment ID_Magnet system-Instrument_Start date
-
-      Josiah_Carberry_P19401-E011-DC_SCM3-HRS750_02-12-2023
-      Josiah_Carberry_none_B114-IsoPlane_02-12-2023
-
-File name: Type of the experiment: PL, Ra(man), Re(flectance),
-Tr(ansmittance) Sample short name: \*\*\*\* Magnetic field: ***T (or
-from to ) Temperature: ***K Light source: SC, 532nm, 785nm, … - Power:
-***mW or uW, or percentage Central frequency / wl/energy: ***cm-1, nm,
-eV Slit: value: \*\*\* um Acq.time: ***min or sec Objective NA: ***NA
-Other: gate voltage, pressure, …
-
-PL_WSe2-MoSe2_00.0T_to_05.2T\_
-10K_633nm-100uW_720nm_30um_2min_0.65NA.SPE
-Ra_CsPr_30T_7.2K_532nm-2mW_550cm-1_30um_3x2min_0.82NA.SPE
-Re_InSe_0T_5K_SC-20%*600meV_50um_5sec* 0.65NA_Gate Sweep -10V to
-+20V.SPE
-
 ## Refactor Use case Narrative
 
 > The experimental data (spectra) are acquired by a spectrometer (#1
@@ -389,54 +397,6 @@ Re_InSe_0T_5K_SC-20%*600meV_50um_5sec* 0.65NA_Gate Sweep -10V to
 > Ra_CsPr_30T_7.2K_532nm-2mW_550cm-1_30um_3x2min_0.82NA.SPE
 > Re_InSe_0T_5K_SC-20%*600meV_50um_5sec* 0.65NA_Gate Sweep -10V to
 > +20V.SPE
-
-The narrative describes a complex experimental setup involving various
-physical parameters, instruments, and naming conventions. Here are the
-key themes or components present in the narrative, along with
-corresponding ontology patterns that might be necessary to describe
-them:
-
-1.  **Instruments**: Spectrometers (#1 HRS750, \#2 IsoPlane, Teledyne
-    Princeton Instruments) and the controlling software (LightField
-    software). This would require an ontology pattern that describes
-    scientific instruments, their models, manufacturers, and associated
-    software.
-
-2.  **Experimental Data**: The acquired data and experiment settings
-    saved in a `.spe` file. An ontology pattern representing data
-    objects, their formats (`.spe`), and the parameters/settings they
-    contain would be necessary.
-
-3.  **File and Directory Naming Conventions**: The narrative describes a
-    detailed naming convention for both directories and files. This
-    could be represented using an ontology pattern that encapsulates the
-    structure and semantics of these naming conventions.
-
-4.  **Physical Parameters**: There are various physical parameters
-    involved in the experiments, such as type of experiment (PL, Ra, Re,
-    Tr), sample name, magnetic field, temperature, light source, power,
-    central frequency/wavelength/energy, slit value, acquisition time,
-    objective numerical aperture (NA), and others like gate voltage,
-    pressure. Ontology patterns representing these physical parameters,
-    their units of measurement (T, K, nm, mW/uW/%, cm-1/nm/eV, um,
-    min/sec, NA, V), and their roles in the experiment would be
-    necessary.
-
-5.  **Experimental Procedure**: The narrative also implies a certain
-    procedure or workflow that is followed in conducting the experiments
-    and saving the data. This could be represented by an ontology
-    pattern describing scientific procedures or workflows.
-
-6.  **Samples**: Different samples are used in the experiments, as seen
-    in the file naming convention. An ontology pattern representing
-    scientific samples, their types, and characteristics would be
-    needed.
-
-Remember, the role of an ontology is to provide a common framework for
-representing knowledge. Depending on the complexity and specific
-requirements of your use case, you might use existing ontologies (like
-the OBO Foundry ontologies), or develop custom ontologies tailored to
-your needs.
 
 ## LLMs
 
