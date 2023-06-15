@@ -67,8 +67,8 @@ Re_InSe_0T_5K_SC-20%*600meV_50um_5sec* 0.65NA_Gate Sweep -10V to
 ## Thematic references in sample data
 
 ChatGPT was used to do the thematic analysis of the sample data.
-[PIDINST
-JSON](https://chat.openai.com/share/2e4ef2c4-23e8-4f14-aca5-96bb2d0346af)
+[PIDINST JSON
+Chat](https://chat.openai.com/share/2e4ef2c4-23e8-4f14-aca5-96bb2d0346af)
 is the link to the chat.
 
 The sample data provided has the following semantic themes that
@@ -144,148 +144,53 @@ graph LR
     EP -- "prov:wasUsedBy" --> Ex
 ```
 
-## Alignments to Science on schema.org
+The narrative describes a complex experimental setup involving various
+physical parameters, instruments, and naming conventions. Here are the
+key themes or components present in the narrative, along with
+corresponding ontology patterns that might be necessary to describe
+them:
 
-Based on the information collected, here’s an analysis of the selected
-ontologies:
+1.  **Instruments**: Spectrometers (#1 HRS750, \#2 IsoPlane, Teledyne
+    Princeton Instruments) and the controlling software (LightField
+    software). This would require an ontology pattern that describes
+    scientific instruments, their models, manufacturers, and associated
+    software.
 
-1.  **Schema.org**: Schema.org is a widely used vocabulary that aims to
-    standardize HTML tags to create rich results about a certain topic
-    of interest. It helps make document mark-up codes more readable and
-    meaningful for both humans and
-    machines【61†source】【62†source】【63†source】【65†source】.
-    Despite its advantages, as of 2016, its adoption was limited, with a
-    survey showing only 17% uptake among US-based marketing agencies and
-    B2C advertisers【64†source】.
+2.  **Experimental Data**: The acquired data and experiment settings
+    saved in a `.spe` file. An ontology pattern representing data
+    objects, their formats (`.spe`), and the parameters/settings they
+    contain would be necessary.
 
-2.  **ESIP Science on Schema.org (SOSO)**: SOSO provides guidelines for
-    repository operators and others to follow consistent conventions to
-    provide schema.org markup in Dataset landing pages to improve data
-    discovery through search engines. The main guides help describe
-    Datasets and Data Repositories. This guidance was created by members
-    of the ESIP science-on-schema.org cluster, and it’s a continuation
-    of the P418 NSF EarthCube vocabulary
-    guidance【40†source】【41†source】【42†source】.
+3.  **File and Directory Naming Conventions**: The narrative describes a
+    detailed naming convention for both directories and files. This
+    could be represented using an ontology pattern that encapsulates the
+    structure and semantics of these naming conventions.
 
-3.  **W3C SOSA**: The Semantic Sensor Network (SSN) ontology, which
-    includes SOSA, is an ontology for describing sensors and their
-    observations, the involved procedures, the studied features of
-    interest, the samples used to do so, and the observed properties, as
-    well as actuators. SOSA provides a lightweight but self-contained
-    core ontology for its elementary classes and properties and can
-    support a wide range of applications and use cases【48†source】.
+4.  **Physical Parameters**: There are various physical parameters
+    involved in the experiments, such as type of experiment (PL, Ra, Re,
+    Tr), sample name, magnetic field, temperature, light source, power,
+    central frequency/wavelength/energy, slit value, acquisition time,
+    objective numerical aperture (NA), and others like gate voltage,
+    pressure. Ontology patterns representing these physical parameters,
+    their units of measurement (T, K, nm, mW/uW/%, cm-1/nm/eV, um,
+    min/sec, NA, V), and their roles in the experiment would be
+    necessary.
 
-4.  **W3C Prov-O**: The PROV Ontology (PROV-O) provides a set of
-    classes, properties, and restrictions that can be used to represent
-    and interchange provenance information generated in different
-    systems and under different contexts. It can be specialized to
-    create new classes and properties to model provenance information
-    for different applications and domains. PROV-O is a lightweight
-    ontology that can be adopted in a wide range of
-    applications【54†source】【55†source】.
+5.  **Experimental Procedure**: The narrative also implies a certain
+    procedure or workflow that is followed in conducting the experiments
+    and saving the data. This could be represented by an ontology
+    pattern describing scientific procedures or workflows.
 
-The thematic analysis identified a set of thematic classes like Agent,
-Dataset, Location, etc. All these ontologies provide extensive coverage
-for these themes.
+6.  **Samples**: Different samples are used in the experiments, as seen
+    in the file naming convention. An ontology pattern representing
+    scientific samples, their types, and characteristics would be
+    needed.
 
-- **Agent**: Prov-O has a class `prov:Agent` that can represent both
-  Person and Organization. schema.org also provides classes for `Person`
-  and `Organization`.
-- **Dataset**: Both schema.org and SOSO provide classes for `Dataset`.
-- **Location**: schema.org provides classes for representing different
-  types of locations.
-- **Sample**: The SOSA ontology from W3C provides a class `sosa:Sample`
-  to represent samples used in observations.
-- **Instrument**: While there isn’t a direct match, classes from
-  schema.org or the `prov:Entity` class from Prov-O could potentially be
-  used to represent an Instrument.
-- **Observation and Experiment**: The SOSA ontology provides classes for
-  representing observations (`sosa:Observation`). The representation of
-  an experiment might involve using a combination of classes from these
-  ontologies, like `prov:Activity` from Prov-O, and potentially some
-  domain-specific classes.
-
-Overall, it seems like a combination of these ontologies could be used
-to represent the themes identified in the analysis, although some
-customization and extension might be required for specific use cases or
-domain-specific needs.
-
-Based on the analysis of the different ontologies and their relationship
-to the thematic classes, here are some insights:
-
-1.  **Schema.org**: It provides a robust and flexible vocabulary for
-    representing datasets and their associated entities. However, it
-    might require some customization or extension for representing more
-    domain-specific concepts like “Observation” and “Instrument”. The
-    ESIP’s Science on Schema.org (SOSO) recommendations provide valuable
-    guidance on how to use schema.org for scientific datasets, and could
-    potentially be extended to cover these additional concepts. The
-    “Instrument” class, for example, could be represented using the
-    general “Product” type that schema.org provides, with properties
-    such as brand, model, and manufacturer. An alternative could be to
-    use the “Thing” type, which is the most generic type in schema.org,
-    and add custom properties as needed. The “Experiment” class could be
-    represented using the “ResearchProject” type in schema.org, which is
-    a subtype of “Project”. This type allows for properties like
-    “leader” (the PI), “participant” (other people involved in the
-    experiment), “startTime” and “endTime” (for the duration of the
-    experiment), and “result” (for the outcome of the experiment, which
-    could be a dataset)【65†source】【61†source】.
-
-2.  **W3C PROV-O**: The PROV Ontology (PROV-O) provides a set of
-    classes, properties, and restrictions that can be used to represent
-    and interchange provenance information generated in different
-    systems and under different contexts. It can also be specialized to
-    create new classes and properties to model provenance information
-    for different applications and domains. This ontology aligns well
-    with the thematic classes that involve the capture of provenance
-    information, such as “Observation”, “Dataset”, and “Agent” (Person,
-    Organization, etc.). Moreover, the notion of “Activity” in PROV-O
-    can be used to represent the “Experiment” class, and the
-    “wasGeneratedBy” property can be used to link a “Dataset” to its
-    generating “Experiment”【55†source】.
-
-3.  **W3C SOSA**: The Sensor, Observation, Sample, and Actuator (SOSA)
-    ontology is designed for describing sensors and their observations,
-    the involved procedures, the studied features of interest, the
-    samples used to do so, and the observed properties, as well as
-    actuators. SOSA can be used to represent the “Observation” and
-    “Instrument” (as “Sensor”) classes in the thematic analysis. It also
-    includes a “Platform” class, which could potentially be used to
-    represent an experimental setup where multiple instruments are used.
-    The “madeObservation” property can link a “Sensor” to its produced
-    “Observation”, and the “usedProcedure” property can capture the
-    experimental procedure involved in the observation【48†source】.
-
-In terms of interoperability, schema.org, PROV-O, and SOSA all follow
-the principles of Linked Data and use the RDF data model, which enables
-them to be combined and used together in a consistent way. The use of
-shared identifiers for common concepts (e.g., foaf:Person,
-dcterms:Dataset) can further enhance the interoperability between these
-ontologies. Additionally, schema.org provides an extension mechanism for
-adding additional properties, which can be used to incorporate elements
-from PROV-O or SOSA as needed.
-
-Please note that the alignment of these ontologies with the thematic
-classes is a high-level assessment and the actual implementation may
-require more detailed analysis and customization to suit the specific
-needs and contexts of the use cases.
-
-``` mermaid
-graph LR
-  Dataset["Dataset <br/> --schema:Dataset<br/> --prov:Entity"] 
-  Observation["Observation <br/> --sosa:Observation <br/> --prov:Entity"]
-  Experiment["Experiment <br/> --schema:ResearchProject <br/> --prov:Activity"]
-  Instrument["Instrument <br/> --schema:Product OR schema:Thing <br/> --sosa:Sensor"]
-  Location["Location <br/> --schema:Place"]
-  Agent["Agent <br/> --foaf:Person OR foaf:Organization <br/> --prov:Agent"]
-
-  Dataset -->|prov:wasGeneratedBy| Observation
-  Observation -->|prov:wasAssociatedWith| Experiment
-  Experiment -->|prov:used| Instrument
-  Experiment -->|prov:atLocation| Location
-  Experiment -->|prov:wasAssociatedWith| Agent
-```
+Remember, the role of an ontology is to provide a common framework for
+representing knowledge. Depending on the complexity and specific
+requirements of your use case, you might use existing ontologies (like
+the OBO Foundry ontologies), or develop custom ontologies tailored to
+your needs.
 
 ## References
 
