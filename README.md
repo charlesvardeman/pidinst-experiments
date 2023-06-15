@@ -16,7 +16,10 @@ in the file [pidinst-schema.json](./data/pidinst-schema.json) and
 instance of the schema. A data prototype is in the Sarowar Hossain
 [Github repository](https://github.com/shmishkat/DataPrototype).
 Analysis was done with ChatGPT GPT-4 with bing web plugin for Retrieval
-Augmented Generation.
+Augmented Generation. Guidance for Dataset follows [ESIP Science on
+schema.org](https://github.com/ESIPFed/science-on-schema.org) (SOSO) and
+[Google Dataset
+Search](https://developers.google.com/search/docs/data-types/dataset).
 
 ## Tools
 
